@@ -23,18 +23,17 @@ const createChecklist = async () => {
 
     const newChecklist = {
         title: checklistName.value,
-        items: [],
-        completed: false
+        items: []
     };
 
     try {
         const docRef = await addDoc(collection(db, 'checklists'), newChecklist);
         checklists.value.push({ id: docRef.id, ...newChecklist });
-        checklistName.value = ''; // Limpar o campo após a criação
-        alert('Checklist criado com sucesso!'); // Mensagem de sucesso
+        checklistName.value = '';
+        alert('Checklist criado com sucesso!');
     } catch (error) {
         console.error("Erro ao criar checklist:", error);
-        alert('Não foi possível criar o checklist.'); // Mensagem de erro
+        alert('Não foi possível criar o checklist.');
     }
 };
 
